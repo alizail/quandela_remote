@@ -12,7 +12,7 @@ theta1 = 2*np.pi*54.74/180
 theta2 = 2*np.pi*17.63/180
 
 
-def get_CCZ():
+def get_CCZ() -> pcvl.Processor:
     # reference
     cz = (pcvl.Circuit(4, name="CZ")
             .add(0, pcvl.PS(np.pi), x_grid=1)
@@ -104,7 +104,7 @@ def CCZ_gate_qiskit(circ, ctrl1, ctrl2, targ):
     circ.h(targ)
 
 def get_CCZ_qiskit():
-    # change name if final
+    # Use qiskit to create the gate, then convert
     qc = qiskit.QuantumCircuit(3)
     CCZ_gate_qiskit(qc,0,1,2)
 
@@ -115,3 +115,7 @@ def get_CCZ_qiskit():
 
     pcvl.pdisplay(processor, recursive=True)
     return processor
+
+def get_CCZ_catalog():
+    # Use the gate from the catalog
+    return pcvl.catalog['postprocessed ccz'].build_processor()
