@@ -2,7 +2,6 @@ import perceval as pcvl
 import qiskit
 from perceval.components import BS, PERM, Port, PS, Unitary, Circuit
 from perceval.utils import Encoding, Matrix, PostSelect
-from deprecated import deprecated
 import numpy as np
 from perceval.converters import QiskitConverter
 from perceval.components.component_catalog import CatalogItem, AsType
